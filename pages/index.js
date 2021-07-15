@@ -2,6 +2,7 @@ import MainGrid from "../src/components/MainGrid";
 import Box from "../src/components/Box";
 import {
   AlurakutMenu,
+  AlurakutProfileSidebarMenuDefault,
   OrkutNostalgicIconSet,
 } from "../src/lib/AlurakutCommons";
 import ProfileRelationsBoxWrapper from "../src/components/ProfileRelations";
@@ -13,6 +14,16 @@ function ProfileSidbar(propriedade) {
         src={`https://github.com/${propriedade.githubUser}.png`}
         style={{ borderRadius: "10px" }}
       />
+      <hr />
+      <p>
+        <a
+          className="boxLink"
+          href={`https://github.com/${propriedade.githubUser}`}
+        >
+          @ {propriedade.githubUser} <hr />
+        </a>
+      </p>
+      <AlurakutProfileSidebarMenuDefault />
     </Box>
   );
 }
@@ -38,6 +49,33 @@ export default function Home() {
           <Box>
             <h1 className="title">Bem vindo (a)</h1>
             <OrkutNostalgicIconSet />
+          </Box>
+          <Box>
+            <h5 className="subTitle">Qual seu desejo do dia ?</h5>
+            <form
+              onSubmit={function handleComunidade() {
+                alert("ola");
+              }}
+            >
+              <div>
+                <input
+                  placeholder="como você deseja nomear sua comunidade ?"
+                  name="title"
+                  aria-label="como você deseja nomear sua comunidade ?"
+                  type="text"
+                ></input>
+              </div>
+              <div>
+                <input
+                  placeholder="qual o brazão da sua comunidade ?"
+                  name="title"
+                  aria-label="qual o brazão da sua comunidade ?"
+                ></input>
+              </div>
+              <button type="submit" style={{ color: "#ffff" }}>
+                criar comunidade
+              </button>
+            </form>
           </Box>
         </div>
         <div
