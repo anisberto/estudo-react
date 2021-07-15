@@ -1,6 +1,10 @@
 import MainGrid from "../src/components/MainGrid";
 import Box from "../src/components/Box";
-import { AlurakutMenu } from "../src/lib/AlurakutCommons";
+import {
+  AlurakutMenu,
+  OrkutNostalgicIconSet,
+} from "../src/lib/AlurakutCommons";
+import ProfileRelationsBoxWrapper from "../src/components/ProfileRelations";
 
 function ProfileSidbar(propriedade) {
   return (
@@ -15,6 +19,14 @@ function ProfileSidbar(propriedade) {
 
 export default function Home() {
   const githubUser = "anisberto";
+  const pessoasFavoritas = [
+    "juunegreiros",
+    "marcosPaixao",
+    "omariosouto",
+    "jonatas",
+    "peas",
+    "anisberto",
+  ];
   return (
     <>
       <AlurakutMenu />
@@ -23,13 +35,32 @@ export default function Home() {
           <ProfileSidbar githubUser={githubUser} />
         </div>
         <div className="welcomeArea" className={{ gridArea: "welcomeArea" }}>
-          <Box>Bem vindo</Box>
+          <Box>
+            <h1 className="title">Bem vindo (a)</h1>
+            <OrkutNostalgicIconSet />
+          </Box>
         </div>
         <div
           className="profileRelacionsArea"
           className={{ gridArea: "profileRelacionsArea" }}
         >
-          <Box>Pessoas da comunidade</Box>
+          <ProfileRelationsBoxWrapper>
+            <h2 className="smallTitle">
+              Pessoas da comunidade ( {pessoasFavoritas.length} )
+            </h2>
+            <ul>
+              {pessoasFavoritas.map((itens) => {
+                return (
+                  <li>
+                    <a href={`/users/${itens}`} key={itens}>
+                      <img src={`https://github.com/${itens}.png`} />
+                      <span>{itens}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </ProfileRelationsBoxWrapper>
           <Box>Comunidades</Box>
         </div>
       </MainGrid>
